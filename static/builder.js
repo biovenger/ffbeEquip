@@ -601,9 +601,13 @@ function getItemLine(index, short = false) {
             var ownNumber = dataStorage.getOwnedNumber(item);
             if (ownNumber.totalOwnedNumber <= alreadyUsed && ownNumber.total > alreadyUsed) {
                 if (item.tmrUnit) {
-                    html += '<div class="td"><span class="glyphicon glyphicon-screenshot" title="TMR you may want to farm. TMR of ' + units[item.tmrUnit].name + '"/></div>'
+                    html += '<div class="td"><span class="glyphicon glyphicon-screenshot" title="TMR you may want to farm. TMR of ' + units[item.tmrUnit].name + '"/></div>';
                 } else if (item.access.includes("trial")) {
-                    html += '<div class="td"><span class="glyphicon glyphicon-screenshot" title="Trial reward"/></div>'
+                    html += '<div class="td"><span class="glyphicon glyphicon-screenshot" title="Trial reward"/></div>';
+                } else if (item.access.includes("chocobo")) {
+                    html += '<div class="td"><span class="glyphicon glyphicon-screenshot" title="Purchaseable from the Fat Chocobo vendor"/></div>';
+                } else {
+                    html += `<div class="td"><span class="glyphicon glyphicon-screenshot" title="Easily obtainable item, tags: ${item.access.join(", ")}"/></div>`;
                 }
             }
         }
